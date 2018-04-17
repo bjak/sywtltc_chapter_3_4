@@ -24,9 +24,16 @@ def purchase(movie, moviegoer):
 def refund(movie, moviegoer):
     """Refund Ticket function"""
 
-    if MOVIEGOERS[moviegoer]["cash"] > 5.0:
+    if purchase == True:
 
         MOVIE_DB[movie] = MOVIE_DB[movie] + 1
         MOVIEGOERS[moviegoer]["cash"] = MOVIEGOERS[moviegoer]["cash"] + 5.0
         MOVIEGOERS[moviegoer]["movies"].append(movie)
+        MOVIEGOERS[moviegoer]["tickets"] = MOVIEGOERS[moviegoer]["tickets"] - 1
+
+def ticket_consume(moviegoer):
+    """Consume the purchase ticket"""
+    
+    if purchase == True:
+
         MOVIEGOERS[moviegoer]["tickets"] = MOVIEGOERS[moviegoer]["tickets"] - 1
