@@ -17,8 +17,15 @@ def test_revised_code():
     assert revised_code.MOVIEGOERS["Cary"]["cash"] == 115.0
     assert revised_code.MOVIEGOERS["Cary"]["tickets"] == 1
 
+#    revised_code.refund("The Bromance", "Cary")
+
+ #   assert revised_code.MOVIE_DB["The Bromance"] == 20
+  #  assert revised_code.MOVIEGOERS["Cary"]["cash"] == 120.0
+   # assert revised_code.MOVIEGOERS["Cary"]["tickets"] == 0
+
+def test_refund():
+    """Test Refund Function"""
+    
     revised_code.refund("The Bromance", "Cary")
 
     assert revised_code.MOVIE_DB["The Bromance"] == 20
-    assert revised_code.MOVIEGOERS["Cary"]["cash"] == 120.0
-    assert revised_code.MOVIEGOERS["Cary"]["tickets"] == 0
