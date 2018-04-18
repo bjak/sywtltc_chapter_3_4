@@ -1,31 +1,26 @@
 """Tests for Code.py"""
 
-import revised_code
+import purchase_ticket
+import movie_database
+#from revised_code import purchase_ticket, refund_ticket
 
-def test_revised_code():
+def test_purchase_ticket():
     """Test Purchase Function"""
 
-    revised_code.purchase("Xmen 8: The Xmennening", "Ricci")
+    purchase_ticket.purchase_ticket("Xmen 8: The Xmennening", "Ricci")
 
-    assert revised_code.MOVIE_DB["Xmen 8: The Xmennening"] == 10
-    assert revised_code.MOVIEGOERS["Ricci"]["cash"] == 4
-    assert revised_code.MOVIEGOERS["Ricci"]["tickets"] == 0
+    assert movie_database.MOVIE_DB["Xmen 8: The Xmennening"] == 10
+    assert movie_database.MOVIEGOERS["Ricci"]["cash"] == 4.0
+    assert movie_database.MOVIEGOERS["Ricci"]["tickets"] == 0
 
-    revised_code.purchase("The Bromance", "Cary")
+    purchase_ticket.purchase_ticket("The Bromance", "Cary")
 
-    assert revised_code.MOVIE_DB["The Bromance"] == 19
-    assert revised_code.MOVIEGOERS["Cary"]["cash"] == 115.0
-    assert revised_code.MOVIEGOERS["Cary"]["tickets"] == 1
+    assert movie_database.MOVIE_DB["The Bromance"] == 19
+    assert movie_database.MOVIEGOERS["Cary"]["cash"] == 115.0
+    assert movie_database.MOVIEGOERS["Cary"]["tickets"] == 1
 
-#    revised_code.refund("The Bromance", "Cary")
+    purchase_ticket.purchase_ticket("Gigli: The Play: The Book: The movie", "Bob")
 
- #   assert revised_code.MOVIE_DB["The Bromance"] == 20
-  #  assert revised_code.MOVIEGOERS["Cary"]["cash"] == 120.0
-   # assert revised_code.MOVIEGOERS["Cary"]["tickets"] == 0
-
-def test_refund():
-    """Test Refund Function"""
-    
-    revised_code.refund("The Bromance", "Cary")
-
-    assert revised_code.MOVIE_DB["The Bromance"] == 20
+    assert movie_database.MOVIE_DB["Gigli: The Play: The Book: The movie"] == 101
+    assert movie_database.MOVIEGOERS["Bob"]["cash"] == 95.0
+    assert movie_database.MOVIEGOERS["Bob"]["tickets"] == 1
