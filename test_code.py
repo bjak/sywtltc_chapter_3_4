@@ -1,6 +1,7 @@
 """Tests for Code.py"""
 
 import purchase_ticket
+import refund
 import movie_database
 #from revised_code import purchase_ticket, refund_ticket
 
@@ -24,3 +25,24 @@ def test_purchase_ticket():
     assert movie_database.MOVIE_DB["Gigli: The Play: The Book: The movie"] == 101
     assert movie_database.MOVIEGOERS["Bob"]["cash"] == 95.0
     assert movie_database.MOVIEGOERS["Bob"]["tickets"] == 1
+
+def test_refund():
+    """Test Refund Function"""
+
+    refund.refund("Xmen 8: The Xmennening", "Ricci")
+
+    assert movie_database.MOVIE_DB["Xmen 8: The Xmennening"] == 10
+    assert movie_database.MOVIEGOERS["Ricci"]["cash"] == 4.0
+    assert movie_database.MOVIEGOERS["Ricci"]["tickets"] == 0
+
+    refund.refund("The Bromance", "Cary")
+
+    assert movie_database.MOVIE_DB["The Bromance"] == 20
+    assert movie_database.MOVIEGOERS["Cary"]["cash"] == 120.0
+    assert movie_database.MOVIEGOERS["Cary"]["tickets"] == 0
+
+    refund.refund("Gigli: The Play: The Book: The movie", "Bob")
+
+    assert movie_database.MOVIE_DB["Gigli: The Play: The Book: The movie"] == 102
+    assert movie_database.MOVIEGOERS["Bob"]["cash"] == 100.0
+    assert movie_database.MOVIEGOERS["Bob"]["tickets"] == 0
